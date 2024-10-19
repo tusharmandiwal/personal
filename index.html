@@ -122,15 +122,20 @@
         const yesBtn = document.getElementById("yes-btn");
         const hiddenMessage = document.getElementById("hidden-message");
 
-        noBtn.addEventListener("mouseover", function() {
-            // Move the "No" button to a random position
+        // Function to move the No button
+        function moveNoBtn() {
             const randomX = Math.floor(Math.random() * (window.innerWidth - 100)) + "px";
             const randomY = Math.floor(Math.random() * (window.innerHeight - 100)) + "px";
             noBtn.style.position = "absolute";
             noBtn.style.left = randomX;
             noBtn.style.top = randomY;
-        });
+        }
 
+        // Event listeners for desktop and mobile
+        noBtn.addEventListener("mouseover", moveNoBtn); // For desktop
+        noBtn.addEventListener("touchstart", moveNoBtn); // For mobile
+
+        // Show hidden message when "Yes" is clicked
         yesBtn.addEventListener("click", function() {
             hiddenMessage.style.display = "block";
         });
